@@ -1,0 +1,7 @@
+- jump trading
+- jane street
+- radix trading
+- DRW
+- optiver(reject me)
+- wolverine trading(reject me)
+- akuna capital
