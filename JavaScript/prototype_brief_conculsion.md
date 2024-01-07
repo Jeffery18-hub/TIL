@@ -2,7 +2,9 @@
 
 In JavaScript, a prototype is a fundamental concept central to the prototype-based inheritance model of the language. It is an object from which other objects inherit properties and methods.
 
+JavaScript 规定，每个函数都有一个`prototype`属性，指向一个对象。
 
+总结一下，原型对象的作用，就是定义所有实例对象共享的属性和方法。这也是它被称为原型对象的原因，而实例对象可以视作从原型对象衍生出来的子对象。
 
 ### Key Characteristics of Prototypes:
 
