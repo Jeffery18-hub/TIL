@@ -17,4 +17,3 @@ var func = function(name){
     console.log(name);
 }
 ```
-
