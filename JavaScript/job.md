@@ -40,6 +40,74 @@ JavaScript 相关的“八股文”通常指的是面试中常见的、关于 Ja
 
    - 说明宏任务（MacroTask）和微任务（MicroTask）。
 
+The Event Loop is a fundamental concept in JavaScript, crucial for understanding how asynchronous code is executed. JavaScript, being single-threaded, uses the event loop to manage the execution of multiple tasks, such as events, callbacks, and I/O operations, without blocking the main thread. Here's how it works:
+
+
+
+### Components of the Event Loop System
+
+
+
+1. **Call Stack**: This is where the JavaScript runtime keeps track of all the function calls in your program. When a function is executed, it's added (pushed) to the stack. When the function returns, it's removed (popped) from the stack.
+
+
+
+2. **Heap**: This is where objects are stored. It's a large, mostly unstructured region of memory.
+
+
+
+3. **Task Queue (or Callback Queue)**: When an asynchronous function (like `setTimeout`) is called, it's handed off to the browser or environment to handle. Once the asynchronous operation completes, the corresponding callback is queued in the task queue.
+
+
+
+4. **Microtask Queue**: This is a special queue that holds microtasks, which typically originate from promises and some other APIs (like `MutationObserver`). Microtasks have priority over the task queue and are processed immediately after the current script execution, or when the call stack is empty, but before rendering and before processing the next task in the task queue.
+
+
+
+### The Event Loop Process
+
+
+
+1. **Executing the Call Stack**: The event loop begins with executing the script in the call stack. If the stack is empty, it looks for tasks in the task queues.
+
+
+
+2. **Checking Microtasks**: After executing a task from the call stack, the event loop checks the microtask queue. If there are any microtasks (e.g., Promise callbacks), the event loop executes them immediately, even if more tasks are waiting in the task queue.
+
+
+
+3. **Rendering**: Most browsers perform rendering tasks (like repainting the UI) at this stage if needed.
+
+
+
+4. **Picking the Next Task**: If the call stack is empty, the event loop picks the next task from the task queue (macro-tasks like `setTimeout` or `setInterval` callbacks) and pushes it to the call stack.
+
+
+
+5. **Loop Continues**: This process continues in a loop, allowing JavaScript to perform non-blocking operations and handle concurrency.
+
+
+
+### Key Takeaways
+
+
+
+- **Non-Blocking**: The event loop enables JavaScript to perform non-blocking operations by using callbacks and promises. While JavaScript is waiting for an asynchronous operation to complete, it can continue to execute other tasks.
+
+
+
+- **Order of Execution**: Understanding the event loop helps in predicting the order of execution of asynchronous JavaScript code.
+
+
+
+- **Avoid Blocking the Event Loop**: Long-running operations can block the event loop, making the web page unresponsive. It's essential to write asynchronous code that quickly completes, allowing the event loop to handle other operations and keep the application responsive.
+
+
+
+The event loop is central to the asynchronous behavior in JavaScript, allowing the single-threaded language to handle multiple operations efficiently and responsively.
+
+
+
 
 
 6. **作用域和作用域链（Scope & Scope Chain）**：
